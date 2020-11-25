@@ -70,18 +70,6 @@ function getCountries () {
         reject(stderr.join(''));
       }
     });
-
-    exec('nordvpn countries', { timeout: 30 }, (err, stdout, stderr) => {
-      if (err) {
-        reject(err);
-        return;
-      }
-
-      const lines = stdout.toString('utf8').split(/[\r\n]/).map((line) => line.trim()).filter((line) => line.length > 3);
-      const countries = lines.join('').split(',').map((line) => line.trim());
-
-      resolve(countries);
-    });
   });
 }
 
