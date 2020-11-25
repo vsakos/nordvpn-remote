@@ -1,9 +1,12 @@
 const express = require('express');
+const cors = require('cors');
 const { getCountries, getStatus, connect, disconnect } = require('./commands');
 
 const app = express();
 
 app.use(express.json());
+
+app.use(cors());
 
 app.get('/status', (req, res) => {
   getStatus().then((status) => {
